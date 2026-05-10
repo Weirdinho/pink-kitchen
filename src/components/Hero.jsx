@@ -49,7 +49,8 @@ function Hero() {
               borderRadius: "40px",
               fontSize: "1rem",
               cursor: "pointer",
-              
+              color: "#4b2e2e",
+              fontWeight: "600",
             }}
           >
             Start Packing Your Box
