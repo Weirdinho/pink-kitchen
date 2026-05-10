@@ -10,6 +10,7 @@ function Header() {
         alignItems: "center",
         position: "sticky",
         background: "transparent",
+        color: "white",
         zIndex: 1,
       }}
     >
