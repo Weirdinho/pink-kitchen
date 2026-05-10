@@ -37,7 +37,7 @@ function App() {
       <div
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/images/cinnamon_bg.jpg')",
+            "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/images/cinnamon_half_bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
