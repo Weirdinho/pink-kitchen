@@ -40,7 +40,6 @@ function App() {
             "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/images/cinnamon_bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "700px",
         }}
       >
         <Header />
