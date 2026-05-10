@@ -4,7 +4,6 @@ import { rolls } from "../data/rolls";
 
 function RollGrid({ addToCart, cart, boxSize }) {
   const [animatingId, setAnimatingId] = useState(null);
-  const [hoveredId, setHoveredId] = useState(null);
 
   const handleAdd = (roll) => {
     if (cart.length >= boxSize) return;
@@ -26,21 +25,22 @@ function RollGrid({ addToCart, cart, boxSize }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+          gridTemplateColumns:
+            "repeat(auto-fit,minmax(250px,1fr))",
           gap: "30px",
         }}
       >
         {rolls.map((roll) => {
           const full = cart.length >= boxSize;
-          const isHovered = hoveredId === roll.id;
 
           return (
             <motion.div
               key={roll.id}
-              onHoverStart={() => setHoveredId(roll.id)}
-              onHoverEnd={() => setHoveredId(null)}
               whileHover={{
                 y: -10,
+              }}
+              whileTap={{
+                scale: 0.97,
               }}
               transition={{
                 duration: 0.3,
@@ -52,7 +52,8 @@ function RollGrid({ addToCart, cart, boxSize }) {
                 position: "relative",
                 cursor: full ? "not-allowed" : "pointer",
                 opacity: full ? 0.45 : 1,
-                boxShadow: "0 10px 40px rgba(0,0,0,0.08)",
+                boxShadow:
+                  "0 10px 40px rgba(0,0,0,0.08)",
               }}
             >
               {/* FLYING ANIMATION */}
@@ -103,7 +104,9 @@ function RollGrid({ addToCart, cart, boxSize }) {
                 }}
               >
                 <motion.img
-                  
+                  whileHover={{
+                    scale: 1.08,
+                  }}
                   transition={{
                     duration: 0.4,
                   }}
@@ -117,12 +120,22 @@ function RollGrid({ addToCart, cart, boxSize }) {
                   }}
                 />
 
-                {/* PLUS ICON (NOW TRIGGERS ON CARD HOVER) */}
+                {/* PLUS ICON */}
                 {!full && (
                   <motion.div
+                    initial={{
+                      opacity: 0,
+                      scale: 0.7,
+                    }}
                     animate={{
                       opacity: 1,
                       scale: 1,
+                    }}
+                    whileHover={{
+                      scale: 1.1,
+                    }}
+                    whileTap={{
+                      scale: 0.9,
                     }}
                     transition={{
                       duration: 0.3,
@@ -132,8 +145,8 @@ function RollGrid({ addToCart, cart, boxSize }) {
                       position: "absolute",
                       top: "18px",
                       right: "18px",
-                      width: "50px",
-                      height: "50px",
+                      width: "55px",
+                      height: "55px",
                       borderRadius: "50%",
                       background: "#ffffff",
                       display: "flex",
@@ -142,9 +155,10 @@ function RollGrid({ addToCart, cart, boxSize }) {
                       fontSize: "2rem",
                       fontWeight: "300",
                       color: "#e68ea3",
-                      boxShadow: "0 5px 20px rgba(0,0,0,0.15)",
+                      boxShadow:
+                        "0 5px 20px rgba(0,0,0,0.15)",
                       cursor: "pointer",
-                      pointerEvents: isHovered ? "auto" : "none",
+                      zIndex: 100,
                     }}
                   >
                     +
@@ -160,10 +174,11 @@ function RollGrid({ addToCart, cart, boxSize }) {
               >
                 <h3
                   style={{
-                    fontFamily: "Segoe Script, cursive",
+                    fontFamily: "Poppins",
                     marginBottom: "10px",
                     fontSize: "1.2rem",
                     fontWeight: "600",
+                    color: "#4b2e2e",
                   }}
                 >
                   {roll.name}
@@ -171,8 +186,7 @@ function RollGrid({ addToCart, cart, boxSize }) {
 
                 <p
                   style={{
-                     fontFamily: "Poppins",
-                     fontWeight: 500,
+                    fontFamily: "Poppins",
                     letterSpacing: "1px",
                     color: "#e68ea3",
                     fontWeight: "600",
