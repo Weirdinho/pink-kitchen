@@ -66,55 +66,58 @@ function SelectedBox({ cart, boxSize, clearCart }) {
           </p>
         )}
 
-        {/* BOX GRID */}
-        {!isEmpty && (
-          <div
+       {/* BOX GRID */}
+{!isEmpty && (
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(90px, 1fr))",
+      gap: "12px",
+      width: "100%",
+      maxWidth: "420px",
+      margin: "20px auto 0",
+      padding: "15px",
+      borderRadius: "25px",
+    }}
+  >
+    <AnimatePresence>
+      {!clearing &&
+        cart.slice(0, 6).map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{
+              opacity: 0,
+              y: 60,
+              x: index % 2 === 0 ? -20 : 20,
+              rotate: index % 2 === 0 ? -6 : 6,
+              transition: { duration: 0.4 },
+            }}
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gridTemplateRows: "repeat(2, 120px)",
-              gap: "14px",
-              width: "420px",
-              padding: "20px",
-              borderRadius: "25px",
-              marginTop: "20px",
+              borderRadius: "15px",
+              overflow: "hidden",
+              boxShadow: "0 6px 15px rgba(0,0,0,0.12)",
+              border: "2px solid white",
+              aspectRatio: "1 / 1",   // 🔥 keeps square shape on all screens
+              position: "relative",
             }}
           >
-            <AnimatePresence>
-              {!clearing &&
-                cart.slice(0, 6).map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{
-                      opacity: 0,
-                      y: 80,
-                      x: index % 2 === 0 ? -30 : 30,
-                      rotate: index % 2 === 0 ? -8 : 8,
-                      transition: { duration: 0.5 },
-                    }}
-                    style={{
-                      borderRadius: "18px",
-                      overflow: "hidden",
-                      boxShadow: "0 8px 20px rgba(0,0,0,0.12)",
-                      border: "3px solid white",
-                    }}
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </motion.div>
-                ))}
-            </AnimatePresence>
-          </div>
-        )}
+            <img
+              src={item.image}
+              alt={item.name}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </motion.div>
+        ))}
+    </AnimatePresence>
+  </div>
+)}
 
         {/* FOOTER */}
         <div
