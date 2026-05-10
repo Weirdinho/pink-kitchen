@@ -20,7 +20,7 @@ function Hero() {
         <h1
           style={{
             fontFamily: "Playfair Display",
-            fontSize: "2rem",
+            fontSize: "3rem",
             marginBottom: "20px",
             fontFamily: "Playfair Display",
           }}
